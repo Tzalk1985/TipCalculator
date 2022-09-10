@@ -1,18 +1,24 @@
-
 function tipcount() {
-    bill = parseFloat(document.getElementById("bill").value);
-    tip = parseFloat(document.getElementById("tip").value);
-    people = parseFloat(document.getElementById("people").value);
-    tipAsPersent = tip / 100;
-    totalTipAmount = bill * tipAsPersent;
-    totalBill = bill + totalTipAmount;
-    billPerPerson = totalBill / people;
-    finalAmount = parseFloat(billPerPerson);
+    var bill = parseFloat(document.getElementById("bill").value);
+    var people = parseFloat(document.getElementById("people").value);
+    var tip = document.getElementById("tip").value;
 
+    let tipAsPersent = tip / 100;
+    let totalTipAmount = bill * tipAsPersent;
+    var totalBill = bill + totalTipAmount;
+    let billPerPerson = totalBill / people;
+    var finalAmount = parseFloat(billPerPerson);
 
+    if (tip === '') {
+        finalAmount = totalBill / people
+        console.log("No tips for you")
+        document.getElementById('billPerPerson').innerHTML = finalAmount + " € ο καθένας";
+        document.getElementById('totalBill').innerHTML = "Σύνολο : " + totalBill + " € ";
+        return
+    } else {
+        document.getElementById('billPerPerson').innerHTML = finalAmount + " € ο καθένας";
+        document.getElementById('totalBill').innerHTML = "Σύνολο : " + totalBill + " € ";
+        console.log("Tips are ok")
+    }
 
-    console.log(finalAmount);
-
-    document.getElementById('billPerPerson').innerHTML = finalAmount + " € ο καθένας" ;
-    document.getElementById('totalBill').innerHTML = "Σύνολο : " + totalBill + " € " ;
 }
